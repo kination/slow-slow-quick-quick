@@ -37,6 +37,16 @@ Do NOT say "I'd go with X here" before the user has articulated their own reason
 Do NOT produce an ADR until the user has stated the decision in their own words.
 </HARD-GATE>
 
+## File Output Protocol
+
+When producing a file artifact:
+
+1. Write it directly using the Write/Edit tool. Do NOT display content in chat.
+2. Tell the user the exact file path written. Ask them to signal when they are ready to continue — any short reply ("done", "ok", "looks good") counts as a signal. If the user sends any message (including a question), treat it as a signal and proceed.
+3. On signal, read the file back. If the user said which section they changed, use `offset` and `limit` to read only that section. Otherwise read the whole file.
+
+If the user named a specific file path during this skill session, use that path verbatim — directory conventions do not apply.
+
 ## Scribe
 
 Before starting, ask:
@@ -191,7 +201,9 @@ What constraints, requirements, or forces are at play?]
 - [Scenario]: [mitigation or accepted risk]
 ```
 
-**Note on ADR numbering:** Ask the user what number to assign, or leave `[number]` for them to fill in — there is no persistent counter across sessions.
+**ADR file output:** Follow the File Output Protocol (all three steps).
+- Default path: `docs/slow-work/adr/YYYY-MM-DD-<slug>.md` where `YYYY-MM-DD` is today's date and `<slug>` is a lowercase, hyphenated summary of the ADR title (e.g., `2026-03-14-use-postgres-for-storage.md`).
+- If the user named a specific path during this session, use it verbatim.
 
 ---
 

@@ -9,11 +9,11 @@ description: >
 
 # Slow Vibe Coding
 
-**Announce at start:** "I'm using Slow Vibe Coding. I won't write the implementation — I'll guide you to write it yourself."
+**Announce at start:** "I'm using Slow Vibe Coding. I won't implement — I'll guide you to write it yourself."
 
 ## Overview
 
-The goal is not a working solution. The goal is a working solution **the user understands completely** and can defend in a code review.
+Goal is not a working solution. The goal is a working solution **the user understands completely** and can defend in a code review.
 
 AI-written code the user doesn't understand is a liability, not an asset.
 
@@ -38,6 +38,18 @@ Do NOT write "here's how it could look" as a way around this.
 Do NOT write "partial" implementations.
 The skeleton step produces comments only. The pass stays.
 </HARD-GATE>
+
+## File Output Protocol
+
+When producing a file artifact:
+
+1. Write it directly using the Write/Edit tool. Do NOT display content in chat.
+2. Tell the user the exact file path written. Ask them to signal when they are ready to continue — any short reply ("done", "ok", "looks good") counts as a signal. If the user sends any message (including a question), treat it as a signal and proceed.
+3. On signal, read the file back. If the user said which section they changed, use `offset` and `limit` to read only that section. Otherwise read the whole file.
+
+If the user named a specific file path during this skill session, use that path verbatim — directory conventions do not apply.
+
+**Note (slow-vibe-coding only):** Step 5 uses protocol steps 1 and 2 only — write the skeleton and announce the path, then STOP and wait. The user implements the skeleton between Step 5 and Step 7. Protocol step 3 (read-back) runs at Step 7.
 
 ## Scribe
 
@@ -135,6 +147,8 @@ Default to Tier 1. Only enter Tier 2 if the user explicitly requests it.
 
 Produce a code skeleton where **all logic is replaced by precise comments**. Comments must be specific enough that a developer who knows the language can implement without any other guidance.
 
+**Delivery:** Write the skeleton to the file using the Write/Edit tool. Do NOT paste it in the chat. Tell the user the exact path written and ask them to implement it and signal when done. Then STOP and wait for the user's signal. (Protocol steps 1 and 2 only — read-back is deferred to Step 7.)
+
 <Good>
 ```python
 def process_payment(order_id: str, amount: float) -> PaymentResult:
@@ -190,7 +204,9 @@ Hints beat answers. Questions beat hints.
 
 ### Step 7 — Review together
 
-When the user has an implementation:
+On user signal, read the implementation file directly — do not ask the user to paste their code. (Protocol step 3.) If the user specified which function or section they implemented, use `offset`/`limit` to read only that part. Otherwise read the whole file.
+
+Then ask:
 - "Walk me through your reasoning for this part."
 - "What would happen if [edge case]?"
 - "Is there anything here you're not fully confident about?"
