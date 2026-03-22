@@ -12,6 +12,7 @@ The name reflects the deliberate practice philosophy: **go slow now to go fast l
 |-------|---------|--------------|
 | `slow-vibe-coding` | Implementing a feature, writing a function, solving a coding problem | Refuses to write implementation code. Brainstorms patterns, presents at least two concrete approaches with trade-offs, provides comment-only skeletons, and guides you to write it yourself. |
 | `slow-vibe-sw-architect` | System design, architecture decisions, technical choices | Refuses to give an immediate answer. Asks trade-off questions and failure scenarios until you arrive at a decision you own. Produces an ADR. |
+| `slow-dev-research` | Technology selection, stack comparisons, engineering trade-off questions | Refuses to give a recommendation upfront. Surfaces research and real-world cases with sources, asks requirements questions one at a time, and guides you to a conclusion you can defend. Produces a research document. |
 
 
 ### Tier system (`slow-vibe-coding`)
@@ -30,12 +31,8 @@ slow-slow-quick-quick/
 ├── skills/
 │   ├── slow-vibe-coding/          # Each skill is a directory
 │   ├── slow-vibe-sw-architect/
-│   ├── slow-writer/
-│   ├── slow-research/
-│   ├── slow-project-plan/
-│   └── scribe/
-├── docs/
-│   └── superpowers/specs/
+│   ├── slow-dev-research/
+│   └── scribe/     # TODO
 ├── scripts/
 ├── tests/
 └── README.md
@@ -68,15 +65,20 @@ The skills are designed to chain. Each one ends by prompting a natural transitio
 ### The Full Pipeline
 
 ```
-slow-vibe-sw-architect → slow-vibe-coding
+slow-dev-research → slow-vibe-sw-architect → slow-vibe-coding
 ```
 
-**Phase 1 — Architecture (`slow-vibe-sw-architect`)**
-- **Input:** Analysis Document from Phase 1
+**Phase 1 — Research (`slow-dev-research`)**
+- **Input:** A technical question or source material (benchmarks, docs, case studies)
+- **Output:** Research document with trade-off map and your conclusion
+- **Handoff:** AI prompts transition to `slow-vibe-sw-architect` when an architectural decision emerges
+
+**Phase 2 — Architecture (`slow-vibe-sw-architect`)**
+- **Input:** Research document from Phase 1
 - **Output:** Completed ADR
 - **Handoff:** AI explicitly prompts you to begin implementation with `slow-vibe-coding`
 
-**Phase 2 — Implementation (`slow-vibe-coding`)**
+**Phase 3 — Implementation (`slow-vibe-coding`)**
 - **Input:** ADR from Phase 2
 - **Output:** Working, user-owned code
 
@@ -85,6 +87,7 @@ slow-vibe-sw-architect → slow-vibe-coding
 
 ### Partial Chains
 
+- **Research only:** Use `slow-dev-research` when you need to compare options before committing to an architecture.
 - **Architecture only:** Start with `slow-vibe-sw-architect` if you already have the research.
 - **Coding only:** Start with `slow-vibe-coding` if you have an ADR — pass it in as context.
 
