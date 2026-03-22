@@ -202,7 +202,7 @@ What constraints, requirements, or forces are at play?]
 ```
 
 **ADR file output:** Follow the File Output Protocol (all three steps).
-- Default path: `docs/slow-work/adr/YYYY-MM-DD-<slug>.md` where `YYYY-MM-DD` is today's date and `<slug>` is a lowercase, hyphenated summary of the ADR title (e.g., `2026-03-14-use-postgres-for-storage.md`).
+- Default path: `docs/slow-work/architecture-decision-records/YYYY-MM-DD-<slug>.md` where `YYYY-MM-DD` is today's date and `<slug>` is a lowercase, hyphenated summary of the ADR title (e.g., `2026-03-14-use-postgres-for-storage.md`).
 - If the user named a specific path during this session, use it verbatim.
 
 ---
