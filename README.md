@@ -2,7 +2,7 @@
 
 A collection of AI assistant skills built around intentional friction. It slows down interactions to deepen user's understanding, form muscle memory, and produce work that reflects the user's genuine thinking rather than AI-generated output.
 
-The name reflects the deliberate practice philosophy: **go slow now to go fast later.**
+The name reflects the deliberate practice philosophy: **go slow now, to go fast later.**
 
 ---
 
@@ -24,39 +24,31 @@ Tier 2 is only entered if explicitly requested.
 
 ---
 
-## Project Structure
-
+## Project Structure (WIP)
 ```
 slow-slow-quick-quick/
-├── skills/
-│   ├── slow-vibe-coding/          # Each skill is a directory
-│   ├── slow-vibe-sw-architect/
-│   ├── slow-dev-research/
-│   └── scribe/     # TODO
-├── scripts/
-├── tests/
+├── slow-engineering/
+│   ├── skills/
+│   │   ├── slow-vibe-coding/
+│   │   ├── slow-vibe-sw-architect/
+│   │   ├── slow-dev-research/
+├── slow-xxx/   # TODO:
+...
 └── README.md
 ```
 
 ---
 
 ## Installation
+For `claude code` users:
+```
+$ /plugin marketplace add kination/slow-slow-quick-quick
+$ /plugin install slow-engineering@slow-slow-quick-quick
+```
+For `codex` users:
 // TODO:
 
----
 
-## Usage (WIP)
-
-Each skill can be invoked explicitly:
-
-```
-/slow-vibe-coding
-/slow-vibe-sw-architect
-```
-
-Or the AI activates them automatically when context matches (e.g., you ask to implement a feature → `slow-vibe-coding` activates).
-
----
 
 ## How to Combine Skills
 
