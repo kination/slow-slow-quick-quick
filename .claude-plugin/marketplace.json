@@ -1,0 +1,17 @@
+{
+  "name": "slow-slow-quick-quick",
+  "owner": {
+    "name": "kination"
+  },
+  "metadata": {
+    "version": "0.2.0",
+    "description": "Slow AI skills that resist immediate answers — guides users through intentional friction to build understanding, ownership, and defensible decisions."
+  },
+  "plugins": [
+    {
+      "name": "slow-engineering",
+      "source": "./slow-engineering",
+      "description": "Slow AI skills for software engineering: vibe coding, SW architecture, and dev research"
+    }
+  ]
+}

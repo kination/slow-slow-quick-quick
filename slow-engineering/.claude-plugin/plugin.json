@@ -1,0 +1,10 @@
+{
+  "name": "slow-engineering",
+  "description": "Slow AI skills for software engineering: coding, architecture, and technical research that resist immediate answers.",
+  "author": {
+    "name": "kination"
+  },
+  "homepage": "https://github.com/kination/slow-slow-quick-quick",
+  "license": "MIT",
+  "keywords": ["slow", "engineering", "coding", "architecture", "research"]
+}
